@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
@@ -21,7 +21,6 @@ const statusStyles: { [key in TaskStatus]: string } = {
 };
 export function TasksPage() {
   const { tasks, loading } = useTasks();
-  const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilters, setStatusFilters] = useState<Record<TaskStatus, boolean>>({
     Completed: true,
@@ -32,7 +31,8 @@ export function TasksPage() {
     Resubmitted: true,
   });
   const navigate = useNavigate();
-  useEffect(() => {
+
+  const filteredTasks = useMemo(() => {
     let result = tasks;
     if (searchTerm) {
       result = result.filter(task =>
@@ -44,7 +44,7 @@ export function TasksPage() {
       .filter(([, value]) => value)
       .map(([key]) => key as TaskStatus);
     result = result.filter(task => activeFilters.includes(task.status));
-    setFilteredTasks(result);
+    return result;
   }, [searchTerm, statusFilters, tasks]);
   const handleStatusFilterChange = (status: TaskStatus) => {
     setStatusFilters(prev => ({ ...prev, [status]: !prev[status] }));

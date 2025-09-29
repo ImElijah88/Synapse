@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } from 'recharts';
 import { Activity, AlertTriangle, CheckCircle2, Clock } from 'lucide-react';
-import { useTasks } from '@/hooks/use-tasks';
+import { useTasks } from '@/store/tasks';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useMemo } from 'react';
 

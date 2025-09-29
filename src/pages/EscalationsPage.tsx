@@ -79,7 +79,7 @@ export function EscalationsPage() {
                       <AlertCircle className="h-5 w-5 text-red-500 mr-3 mt-1" />
                       <div>
                         <h4 className="font-semibold text-red-800 dark:text-red-300">QC Feedback</h4>
-                        <p className="text-sm text-red-700 dark:text-red-400">{selectedTask.failureReason}</p>
+                        <p className="text-sm text-red-700 dark:text-red-400">{selectedTask.qcNotes || 'No QC notes available.'}</p>
                       </div>
                     </div>
                   </div>

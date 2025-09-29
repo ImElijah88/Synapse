@@ -80,4 +80,5 @@ export interface Task {
   currentStep: number;
   workflow: WorkflowStep[];
   logs: string[];
+  failureReason?: string;
 }

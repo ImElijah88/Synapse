@@ -69,10 +69,7 @@ export function userRoutes(app: Hono<{ Bindings: Env }>) {
     app.get('/api/tasks', async (c) => {
         const { status } = c.req.query();
         const controller = getAppController(c.env);
-        let tasks = await controller.getTasks();
-        if (status) {
-            tasks = tasks.filter((task: { status: string }) => task.status === status);
-        }
+        const tasks = await controller.getTasks(status);
         return c.json({ success: true, data: tasks });
     });
     app.post('/api/tasks', async (c) => {

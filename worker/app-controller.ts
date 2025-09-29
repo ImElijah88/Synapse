@@ -55,6 +55,7 @@ const mockTasks: Task[] = [
     id: 'tsk-004', name: 'Analyze Competitor Website SEO', status: 'Escalated',
     submittedAt: new Date('2024-09-14T14:00:00Z').toISOString(), lastUpdatedAt: new Date('2024-09-14T15:10:00Z').toISOString(),
     successRate: 50, currentStep: 6, workflow: mockWorkflowSteps('Escalated'), logs: ['QC failed, requires human review'],
+    failureReason: 'Automated analysis inconclusive. Requires human review for nuanced interpretation.',
   },
   {
     id: 'tsk-005', name: 'Draft Marketing Email Campaign', status: 'Pending',
